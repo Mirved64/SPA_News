@@ -1,0 +1,2 @@
+export const ACCESS_KEY =
+  process.env.NEXT_PUBLIC_SECRET_KEY ?? 'c6171105-65be-4626-8a29-82224eb010b1'
