@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 150px;
+  background-color: var(--main-color);
+}
+
+.wrapperLogo {
+  width: 350px;
+  height: 100px;
+}
+
+.wrapperTitle {
+  display: flex;
+  justify-content: center;
+  width: 335px;
+  height: 30px;
+}
+
+.title {
+  font-size: 28px;
+  color: white;
+}
