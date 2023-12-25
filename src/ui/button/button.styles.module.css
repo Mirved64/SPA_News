@@ -1,0 +1,17 @@
+.wrapperButton {
+  cursor: pointer;
+  display: flex;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  background-color: var(--second-color);
+  margin: 5px 10px 5px auto;
+}
+
+.buttonText {
+  font-size: 16px;
+  color: var(--primary-color);
+  line-height: 1.1;
+}
