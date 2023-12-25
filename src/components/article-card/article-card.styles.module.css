@@ -1,28 +1,33 @@
 .wrapper {
   display: flex;
+  flex-basis: 300px;
+  padding: 10px;
+}
+
+.wrapperContent {
+  display: flex;
   flex-direction: column;
+  height: 100%;
   align-items: center;
   border-radius: 16px;
-  width: 335px;
-  margin: 20px auto;
+  flex-basis: 300px;
   overflow: hidden;
 }
 
-.wrapper:hover {
-  scale: 1.05;
+.wrapperContent:hover {
   transition: 0.3s;
   box-shadow: 0 6px 13px 0 var(--primary-color);
 }
 
 .wrapperImage {
-  width: 335px;
-  height: 200px;
+  width: 300px;
+  height: 180px;
 }
 
 .wrapperInfo {
   display: flex;
   flex-direction: column;
-  width: 335px;
+  width: 300px;
   height: 100%;
   background-color: var(--main-color);
 }
@@ -33,13 +38,15 @@
 }
 
 .infoDate {
-  font-size: 20px;
+  font-size: 14px;
   color: var(--second-color);
   margin-top: 10px;
 }
 
 .wrapperInfoTitle {
-  width: 335px;
+  display: flex;
+  flex-basis: 60px;
+  width: 100%;
   margin: 10px 0 10px;
   padding: 0 8px 0 8px;
 }
@@ -50,19 +57,5 @@
   color: var(--second-color);
 }
 
-.wrapperDetails {
-  display: flex;
-  border-radius: 16px;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 30px;
-  background-color: var(--second-color);
-  margin: 5px 10px 5px auto;
-}
-
-.detailsText {
-  font-size: 16px;
-  color: var(--primary-color);
-  line-height: 1.1;
+@media screen and (min-width: 60em) {
 }

@@ -1,8 +1,8 @@
-export const getImgAlt = (data: { main: { bodyHtml: string } }): string =>
-  data?.main?.bodyHtml?.match(/alt=["|'].*?["|']/) !== null
-    ? data?.main?.bodyHtml
+export const getImgAlt = (data: string | undefined): string =>
+  (data?.match(/alt=["|'].*?["|']/) !== null
+    ? data
         ?.match(/alt=["|'].*?["|']/)!
         .splice(-1, 1)[0]
         .slice(4)
         .split('"')[1]
-    : 'theGuardianPic'
+    : 'theGuardianPic') ?? 'theGuardianPic'
