@@ -3,20 +3,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 150px;
+  width: 100%;
+  height: 175px;
   background-color: var(--main-color);
 }
 
 .wrapperLogo {
-  width: 350px;
-  height: 100px;
+  width: 320px;
+  height: 115px;
 }
 
 .wrapperTitle {
   display: flex;
   justify-content: center;
-  width: 335px;
+  width: 320px;
   height: 30px;
 }
 
