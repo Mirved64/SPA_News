@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { DataResponse } from '@lib/redux/reducers/actions-creators/fetch-articles.interfaces'
-import { Article } from '@utils'
+import { DataResponse } from './fetch-articles.interfaces'
+import { ACCESS_KEY, Article } from '@utils'
 
 export const fetchArticles = createAsyncThunk<Article[], undefined, { rejectValue: string }>(
-  'article/fetchAll',
+  'articles/fetchAll',
   (_, thunkAPI) =>
     fetch(
-      `https://content.guardianapis.com/search?api-key=c6171105-65be-4626-8a29-82224eb010b1&format=json&show-blocks=main`,
+      `https://content.guardianapis.com/search?api-key=${ACCESS_KEY}&format=json&show-blocks=main`,
       {
         method: 'GET',
         headers: {
