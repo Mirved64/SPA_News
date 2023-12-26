@@ -1,5 +1,4 @@
-import { getImgAlt, getImgSrc } from '@components/article-card/helpers'
-import { getArticleDate } from '@components/article-card/helpers/get-date'
+import { getArticleDate, getImgAlt, getImgSrc } from '../helpers'
 
 export const useCardData = (
   articleData: string | undefined,

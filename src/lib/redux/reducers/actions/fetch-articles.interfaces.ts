@@ -1,4 +1,4 @@
-import { Article } from '@utils'
+import { Article } from '@utils/interfaces'
 
 export interface DataResponse {
   response: {

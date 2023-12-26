@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ArticlesState } from './articles-state.interfaces'
-import { fetchArticles, fetchNextArticles } from '@lib/redux'
-
-import { Article } from '@utils'
+import { fetchArticles, fetchNextArticles } from '@lib/redux/reducers'
+import { Article } from '@utils/interfaces'
 
 const initialState: ArticlesState = {
   articles: [],

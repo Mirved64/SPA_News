@@ -3,8 +3,8 @@ import { useEffect, useLayoutEffect } from 'react'
 import styles from './styles.module.css'
 
 import { ArticleCard } from '@components/article-card'
-import { fetchArticles, fetchNextArticles } from '@lib/redux'
-import { useAppDispatch, useAppSelector, usePageBottom } from '@utils'
+import { fetchArticles, fetchNextArticles } from '@lib/redux/reducers'
+import { useAppDispatch, useAppSelector, usePageBottom } from '@utils/hooks'
 
 const Home = () => {
   const dispatch = useAppDispatch()

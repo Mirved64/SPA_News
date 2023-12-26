@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { articlesReducer } from '@lib/redux/reducers'
+import { articlesReducer } from './reducers'
 
 export const rootReducer = combineReducers({
   articles: articlesReducer,

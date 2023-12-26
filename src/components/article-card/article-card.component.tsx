@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { useIntl } from 'react-intl'
 import { ArticleCardProps } from './article-card.interfaces'
 import styles from './article-card.styles.module.css'
-import { useCardData } from '@components/article-card/hooks'
+import { useCardData } from './hooks'
 import { ButtonPrimary } from '@ui/button'
 
 export const ArticleCard: FC<ArticleCardProps> = ({ id, webTitle, webPublicationDate, blocks }) => {

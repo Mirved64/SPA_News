@@ -1,6 +1,6 @@
 import { FC } from 'react'
+import { ButtonProps } from './button.interfaces'
 import styles from './button.styles.module.css'
-import { ButtonProps } from '@ui/button/button.interfaces'
 
 export const ButtonPrimary: FC<ButtonProps> = ({ text }) => (
   <button className={styles.wrapperButton}>

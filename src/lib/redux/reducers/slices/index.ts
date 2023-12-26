@@ -1,1 +1,1 @@
-export * from './articles-slices'
+export * from './articles.slice'
