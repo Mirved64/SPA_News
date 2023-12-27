@@ -3,7 +3,8 @@ import { useEffect, useLayoutEffect } from 'react'
 import styles from './styles.module.css'
 
 import { ArticleCard } from '@components/article-card'
-import { fetchArticles, fetchNextArticles } from '@lib/redux/reducers'
+import { Search } from '@components/search'
+import { fetchArticles, fetchNextArticles } from '@lib/redux/reducers/actions'
 import { useAppDispatch, useAppSelector, usePageBottom } from '@utils/hooks'
 
 const Home = () => {
@@ -24,7 +25,8 @@ const Home = () => {
   }, [pageBottom, setPageBottom, lastArticleId, dispatch])
 
   return (
-    <>
+    <main>
+      <Search />
       <div className={styles.wrapperContent}>
         {articles.map((article) => (
           <ArticleCard
@@ -36,7 +38,7 @@ const Home = () => {
           />
         ))}
       </div>
-    </>
+    </main>
   )
 }
 
