@@ -8,5 +8,7 @@ export const SearchInput: FC<InputProps> = ({ onChange, placeholder }) => (
     onChange={onChange}
     placeholder={placeholder}
     type={'text'}
+    pattern="^[\s\d\w\-',]+$"
+    title={'Use only latin letters and digits, keywords delimited by commas'}
   />
 )

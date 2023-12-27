@@ -1,4 +1,4 @@
-.inputSearch{
+.inputSearch {
   width: 100%;
   height: 100%;
   border: 2px solid var(--primary-color);
@@ -8,12 +8,16 @@
   font-size: 14px;
 }
 
-.inputSearch::placeholder{
+.inputSearch::placeholder {
   font-size: 14px;
   color: var(--ghost-color);
 }
 
-.inputSearch:focus{
+.inputSearch:focus {
   outline: none;
   border: 2px solid var(--primary-color);
+}
+
+.inputSearch:invalid {
+  border: red solid 2px;
 }
