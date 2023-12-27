@@ -1,5 +1,7 @@
 {
   "header.title": "Simple News Site",
   "article-card.details": "Details",
-  "card.web-publication-date": "Web publication date:"
+  "card.web-publication-date": "Web publication date:",
+  "search.input.placeholder": "Keywords",
+  "search.button.text": "Search"
 }
