@@ -5,7 +5,6 @@ export const usePageBottom = (): [
   setReachedBottom: Dispatch<SetStateAction<boolean>>,
 ] => {
   const [reachedBottom, setReachedBottom] = useState<boolean>(false)
-
   const handleScroll = () => {
     const scrollHeight = document.documentElement.scrollHeight
     const innerHeight = window.innerHeight
@@ -15,11 +14,9 @@ export const usePageBottom = (): [
       setReachedBottom(true)
     }
   }
-
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
   return [reachedBottom, setReachedBottom]
 }

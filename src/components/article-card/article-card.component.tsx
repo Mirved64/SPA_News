@@ -8,9 +8,7 @@ import { ButtonPrimary } from '@ui/button'
 
 export const ArticleCard: FC<ArticleCardProps> = ({ id, webTitle, webPublicationDate, blocks }) => {
   const { formatMessage } = useIntl()
-
   const { imgSrc, imgAlt, articleDate } = useCardData(blocks?.main?.bodyHtml, webPublicationDate)
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.wrapperContent} id={id}>

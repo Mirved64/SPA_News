@@ -1,1 +1,1 @@
-export * from './card-data.hook'
+export * from './use-card-data.hook'
