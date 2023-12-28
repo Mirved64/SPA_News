@@ -1,2 +1,2 @@
 export * from './article.interfaces'
-export * from './common-props.interfaces'
+export * from './query.interfaces'
