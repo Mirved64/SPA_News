@@ -2,7 +2,7 @@
 
 import { IntlProvider } from 'react-intl'
 import { Provider } from 'react-redux'
-import * as messages from './react-intl/locales/en.json'
+import * as messages from '@lib/react-intl/locales/en.json'
 import { setupStore } from '@lib/redux'
 
 export const Providers = (props: React.PropsWithChildren) => (

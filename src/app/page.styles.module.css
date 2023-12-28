@@ -1,0 +1,4 @@
+.wrapperMain {
+  display: flex;
+  flex-direction: column;
+}
