@@ -10,7 +10,6 @@ const Home = () => {
   const [reachedBottom, setReachedBottom] = usePageBottom()
   const [keyWords, setKeyWords] = useState<string>('')
   const [sortValue, setSortValue] = useState<string>(SortListOptions.byNewest)
-
   return (
     <main className={styles.wrapperMain}>
       <Search
@@ -35,7 +34,6 @@ const Home = () => {
         reachedBottom={reachedBottom}
         setReachedBottom={setReachedBottom}
         keyWords={keyWords}
-        sortValue={sortValue}
       />
     </main>
   )

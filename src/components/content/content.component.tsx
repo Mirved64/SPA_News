@@ -4,13 +4,8 @@ import styles from './content.styles.module.css'
 import { useContentData } from './hooks'
 import { ArticleCard } from '@components/article-card'
 
-export const Content: FC<ContentProps> = ({
-  reachedBottom,
-  setReachedBottom,
-  keyWords,
-  sortValue,
-}) => {
-  const articles = useContentData({ reachedBottom, setReachedBottom, keyWords, sortValue })
+export const Content: FC<ContentProps> = ({ reachedBottom, setReachedBottom, keyWords }) => {
+  const articles = useContentData({ reachedBottom, setReachedBottom, keyWords })
   return (
     <div className={styles.wrapperContent}>
       {articles.map((article) => (

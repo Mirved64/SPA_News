@@ -4,5 +4,4 @@ export interface ContentProps {
   reachedBottom: boolean
   setReachedBottom: Dispatch<SetStateAction<boolean>>
   keyWords: string
-  sortValue: string
 }
