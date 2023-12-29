@@ -7,7 +7,7 @@ export const fetchNextArticles = createAsyncThunk<Article[], Query, { rejectValu
   'nextArticles/fetchNextArticles',
   (query, thunkAPI) =>
     fetch(
-      `https://content.guardianapis.com/content/${query.articleId}/next?api-key=${ACCESS_KEY}&format=json&&show-blocks=main&page-size=9&order-by=${query.sortValue}`,
+      `https://content.guardianapis.com/content/${query.articleId}/next?api-key=${ACCESS_KEY}&format=json&&show-blocks=main&page-size=9&order-by=${query.sortValue}&page-size=${query.perPageValue}`,
       {
         method: 'GET',
         headers: {

@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl'
 import styles from './header.styles.module.css'
 
 export const Header = () => (
-  <header className={styles.wrapper}>
+  <header className={styles.header}>
     <div className={styles.wrapperLogo}>
       <Image
         src={'/logo.png'}
@@ -16,7 +16,7 @@ export const Header = () => (
         style={{ width: '100%', height: 'auto' }}
       />
     </div>
-    <div className={styles.wrapperTitle}>
+    <div className={styles.wrapperHeaderTitle}>
       <span className={styles.title}>
         <FormattedMessage id={'header.title'} />
       </span>

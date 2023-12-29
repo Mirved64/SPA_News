@@ -9,7 +9,7 @@ export const fetchNextArticlesByKeywords = createAsyncThunk<
   { rejectValue: string }
 >('nextArticles/fetchByKeyWords', (query, thunkAPI) =>
   fetch(
-    `https://content.guardianapis.com/search?page=${query.pageNumber}&q=${query.keyWords}&api-key=${ACCESS_KEY}&format=json&show-blocks=main&order-by=${query.sortValue}`,
+    `https://content.guardianapis.com/search?page=${query.pageNumber}&q=${query.keyWords}&api-key=${ACCESS_KEY}&format=json&show-blocks=main&order-by=${query.sortValue}&page-size=${query.perPageValue}`,
     {
       method: 'GET',
       headers: {

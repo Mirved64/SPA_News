@@ -9,19 +9,24 @@ export const useContentData = ({
   reachedBottom,
   setReachedBottom,
   keyWords,
+  perPageValue,
 }: ContentProps): Article[] => {
   const dispatch = useAppDispatch()
   const { articles } = useAppSelector((state) => state.articles)
   useLayoutEffect(() => {
-    dispatch(fetchArticles({ sortValue: SortListOptions.byNewest }))
-  }, [dispatch])
+    dispatch(fetchArticles({ sortValue: SortListOptions.byNewest, perPageValue }))
+  }, [dispatch, perPageValue])
   useEffect(() => {
     let lastArticleId = articles[articles.length - 1]?.id
     if (keyWords.length === 0 && lastArticleId && reachedBottom) {
       dispatch(
-        fetchNextArticles({ articleId: lastArticleId, sortValue: SortListOptions.byNewest }),
+        fetchNextArticles({
+          articleId: lastArticleId,
+          sortValue: SortListOptions.byNewest,
+          perPageValue,
+        }),
       ).finally(() => setReachedBottom(false))
     }
-  }, [reachedBottom, setReachedBottom, dispatch, keyWords, articles])
+  }, [reachedBottom, setReachedBottom, dispatch, keyWords, articles, perPageValue])
   return articles
 }

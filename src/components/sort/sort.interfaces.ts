@@ -12,4 +12,5 @@ export interface SortProps {
   sortValue: string
   id: string
   setSortValue: Dispatch<SetStateAction<string>>
+  perPageValue: string
 }

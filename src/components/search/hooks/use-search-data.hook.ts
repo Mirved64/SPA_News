@@ -16,6 +16,7 @@ export const useSearchData = ({
   setKeyWords,
   sortValue,
   setSortValue,
+  perPageValue,
 }: SearchProps): {
   handleSubmit: FormEventHandler<HTMLFormElement>
   handleChange: ChangeEventHandler<HTMLInputElement>
@@ -32,12 +33,23 @@ export const useSearchData = ({
           keyWords,
           pageNumber: pageNumber.toString(),
           sortValue,
+          perPageValue,
         }),
       )
         .then(() => setPageNumber((prevState) => prevState + 1))
         .finally(() => setReachedBottom(false))
     }
-  }, [reachedBottom, setReachedBottom, setPageNumber, pageNumber, dispatch, keyWords, sortValue])
+  }, [
+    reachedBottom,
+    setReachedBottom,
+    setPageNumber,
+    pageNumber,
+    dispatch,
+    keyWords,
+    sortValue,
+    perPageValue,
+  ])
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     debounced(
       event.target.value.trim().toLowerCase().replace(/\s/g, '%20').replace(/,%20/g, '%20AND%20'),
@@ -46,13 +58,20 @@ export const useSearchData = ({
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
     if (keyWords.length !== 0) {
-      dispatch(fetchArticlesByKeywords({ keyWords, sortValue: SortListOptions.byRelevance })).then(
-        () => setSortValue(SortListOptions.byRelevance),
-      )
+      dispatch(
+        fetchArticlesByKeywords({
+          keyWords,
+          sortValue: SortListOptions.byRelevance,
+          perPageValue,
+        }),
+      ).then(() => setSortValue(SortListOptions.byRelevance))
     } else {
-      dispatch(fetchArticles({ sortValue: SortListOptions.byNewest })).then(() =>
-        setSortValue(SortListOptions.byNewest),
-      )
+      dispatch(
+        fetchArticles({
+          sortValue: SortListOptions.byNewest,
+          perPageValue,
+        }),
+      ).then(() => setSortValue(SortListOptions.byNewest))
     }
   }
   return {

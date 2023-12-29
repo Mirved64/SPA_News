@@ -4,4 +4,5 @@ export interface ContentProps {
   reachedBottom: boolean
   setReachedBottom: Dispatch<SetStateAction<boolean>>
   keyWords: string
+  perPageValue: string
 }

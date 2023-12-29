@@ -10,7 +10,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({ id, webTitle, webPublication
   const { formatMessage } = useIntl()
   const { imgSrc, imgAlt, articleDate } = useCardData(blocks?.main?.bodyHtml, webPublicationDate)
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapperArticle}>
       <div className={styles.wrapperContent} id={id}>
         <div className={styles.wrapperImage}>
           <Image

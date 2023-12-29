@@ -3,4 +3,5 @@ export interface Query {
   keyWords?: string
   pageNumber?: string
   sortValue?: string
+  perPageValue?: string
 }

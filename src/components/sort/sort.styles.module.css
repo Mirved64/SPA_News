@@ -1,5 +1,5 @@
-.wrapper {
+.wrapperSort {
   width: 100%;
-  flex-basis: 200px;
-  padding: 10px;
+  flex-basis: 175px;
+  margin-right: 10px;
 }

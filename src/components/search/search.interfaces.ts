@@ -7,4 +7,5 @@ export interface SearchProps {
   setKeyWords: Dispatch<SetStateAction<string>>
   sortValue: string
   setSortValue: Dispatch<SetStateAction<string>>
+  perPageValue: string
 }

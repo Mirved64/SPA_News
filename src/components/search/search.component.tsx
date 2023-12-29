@@ -13,6 +13,7 @@ export const Search: FC<SearchProps> = ({
   setKeyWords,
   sortValue,
   setSortValue,
+  perPageValue,
 }) => {
   const { formatMessage } = useIntl()
   const { handleSubmit, handleChange } = useSearchData({
@@ -22,9 +23,10 @@ export const Search: FC<SearchProps> = ({
     setKeyWords,
     sortValue,
     setSortValue,
+    perPageValue,
   })
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapperSearch}>
       <form className={styles.searchForm} onSubmit={handleSubmit}>
         <div className={styles.searchInput}>
           <SearchInput
