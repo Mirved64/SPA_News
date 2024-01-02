@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { articlesReducer } from '@lib/redux/reducers/slices'
+import { articlesReducer } from './reducers/slices/articles'
+import { queryReducer } from './reducers/slices/query'
 
 export const rootReducer = combineReducers({
   articles: articlesReducer,
+  query: queryReducer,
 })
 
 export const setupStore = configureStore({
