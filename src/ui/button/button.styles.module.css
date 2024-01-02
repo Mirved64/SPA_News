@@ -29,8 +29,7 @@
   align-items: center;
   justify-content: center;
   width: 100px;
-  height: 30px;
+  height: 40px;
   background-color: var(--second-color);
-  margin: 5px 10px 5px auto;
   border: 2px solid var(--primary-color);
 }

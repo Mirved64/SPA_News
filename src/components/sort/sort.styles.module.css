@@ -1,0 +1,5 @@
+.wrapper {
+  width: 100%;
+  flex-basis: 200px;
+  padding: 10px;
+}

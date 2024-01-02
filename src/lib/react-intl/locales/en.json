@@ -3,5 +3,7 @@
   "article-card.details": "Details",
   "card.web-publication-date": "Web publication date:",
   "search.input.placeholder": "Keywords",
-  "search.button.text": "Search"
+  "search.button.text": "Search",
+  "sort.by-newest": "sort by newest",
+  "sort.by-relevance": "sort by relevance"
 }

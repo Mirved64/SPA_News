@@ -1,39 +1,58 @@
 import { ChangeEvent, ChangeEventHandler, FormEventHandler, useEffect, useState } from 'react'
+import { useDebouncedCallback } from 'use-debounce'
+import { SearchProps } from '../search.interfaces'
+import { SortListOptions } from '@components/sort'
 import {
   fetchArticles,
   fetchArticlesByKeywords,
   fetchNextArticlesByKeywords,
 } from '@lib/redux/reducers/actions'
 import { useAppDispatch } from '@utils/hooks'
-import { CommonProps } from '@utils/interfaces'
 
 export const useSearchData = ({
   reachedBottom,
   setReachedBottom,
   keyWords,
   setKeyWords,
-}: CommonProps): {
+  sortValue,
+  setSortValue,
+}: SearchProps): {
   handleSubmit: FormEventHandler<HTMLFormElement>
   handleChange: ChangeEventHandler<HTMLInputElement>
 } => {
   const dispatch = useAppDispatch()
-  const [pageNumber, setPageNumber] = useState<number>(1)
+  const debounced = useDebouncedCallback((keyWords) => {
+    setKeyWords!(keyWords)
+  }, 1000)
+  const [pageNumber, setPageNumber] = useState<number>(2)
   useEffect(() => {
     if (keyWords.length !== 0 && reachedBottom) {
-      dispatch(fetchNextArticlesByKeywords({ keyWords, pageNumber: pageNumber.toString() }))
+      dispatch(
+        fetchNextArticlesByKeywords({
+          keyWords,
+          pageNumber: pageNumber.toString(),
+          sortValue,
+        }),
+      )
         .then(() => setPageNumber((prevState) => prevState + 1))
         .finally(() => setReachedBottom(false))
     }
-  }, [reachedBottom, setReachedBottom, setPageNumber, pageNumber, dispatch, keyWords])
+  }, [reachedBottom, setReachedBottom, setPageNumber, pageNumber, dispatch, keyWords, sortValue])
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setKeyWords!(() => event.target.value.trim().toLowerCase().split(' ').join(''))
+    debounced(
+      event.target.value.trim().toLowerCase().replace(/\s/g, '%20').replace(/,%20/g, '%20AND%20'),
+    )
   }
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
-    if (keyWords !== '') {
-      dispatch(fetchArticlesByKeywords(keyWords))
+    if (keyWords.length !== 0) {
+      dispatch(fetchArticlesByKeywords({ keyWords, sortValue: SortListOptions.byRelevance })).then(
+        () => setSortValue(SortListOptions.byRelevance),
+      )
     } else {
-      dispatch(fetchArticles())
+      dispatch(fetchArticles({ sortValue: SortListOptions.byNewest })).then(() =>
+        setSortValue(SortListOptions.byNewest),
+      )
     }
   }
   return {

@@ -2,3 +2,9 @@
   display: flex;
   flex-direction: column;
 }
+
+.wrapperSort {
+  display: flex;
+  justify-content: center;
+  background-color: var(--ghost-color);
+}
