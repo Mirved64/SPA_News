@@ -8,9 +8,3 @@ export interface SelectSortValueProps {
   onChange: ChangeEventHandler<HTMLSelectElement>
   sortValue: string
 }
-
-export interface SelectArticlesPerPageProps {
-  id: string
-  onChange: ChangeEventHandler<HTMLSelectElement>
-  perPageValue: string
-}

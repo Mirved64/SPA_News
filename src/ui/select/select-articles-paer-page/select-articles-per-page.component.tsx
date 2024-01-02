@@ -1,23 +1,7 @@
-import { FC, useMemo } from 'react'
+import { FC } from 'react'
 import { useIntl } from 'react-intl'
-import { SelectArticlesPerPageProps, SelectSortValueProps } from './select.interface'
-import styles from './select.styles.module.css'
-
-export const SelectSortValue: FC<SelectSortValueProps> = ({
-  id,
-  valueFirst,
-  valueSecond,
-  onChange,
-  sortValue,
-}) => {
-  const { formatMessage } = useIntl()
-  return (
-    <select id={id} className={styles.selectSort} onChange={onChange} value={sortValue}>
-      <option value={valueFirst}>{formatMessage({ id: 'sort.by-newest' })}</option>
-      <option value={valueSecond}>{formatMessage({ id: 'sort.by-relevance' })}</option>
-    </select>
-  )
-}
+import { SelectArticlesPerPageProps } from './select-articles-per-page-value.interfaces'
+import styles from './select-articles-per-page-value.styles.module.css'
 
 export const SelectArticlesPerPage: FC<SelectArticlesPerPageProps> = ({
   id,
@@ -26,7 +10,7 @@ export const SelectArticlesPerPage: FC<SelectArticlesPerPageProps> = ({
 }) => {
   const { formatMessage } = useIntl()
   let minArticlesPerPage: number = 10
-  const array: number[] = useMemo(() => [], [])
+  const array: number[] = []
   while (array.length < 50) {
     array.push(minArticlesPerPage++)
   }
