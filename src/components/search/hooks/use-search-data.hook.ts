@@ -44,10 +44,10 @@ export const useSearchData = ({
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     debounced(event.target.value)
   }
-  console.log(keyWords)
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
     if (keyWords.length !== 0) {
+      dispatch(querySlice.actions.resetPageNumber())
       dispatch(querySlice.actions.setSortValue(SortListOptions.byRelevance))
       dispatch(
         fetchArticlesByKeywords({
@@ -57,6 +57,7 @@ export const useSearchData = ({
         }),
       )
     } else if (keyWords.length === 0) {
+      dispatch(querySlice.actions.resetPageNumber())
       dispatch(querySlice.actions.setSortValue(SortListOptions.byNewest))
       dispatch(
         fetchArticles({
