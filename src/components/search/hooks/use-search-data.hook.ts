@@ -1,31 +1,31 @@
-import { ChangeEvent, ChangeEventHandler, FormEventHandler, useEffect, useState } from 'react'
+import { ChangeEvent, ChangeEventHandler, FormEventHandler, useEffect } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
-import { SearchProps } from '../search.interfaces'
+import { SearchProps } from '@components/search/search.interfaces'
 import { SortListOptions } from '@components/sort'
 import {
   fetchArticles,
   fetchArticlesByKeywords,
   fetchNextArticlesByKeywords,
 } from '@lib/redux/reducers/actions'
-import { useAppDispatch } from '@utils/hooks'
+import { querySlice } from '@lib/redux/reducers/slices/query'
+import { useAppDispatch, useAppSelector } from '@utils/hooks'
 
 export const useSearchData = ({
   reachedBottom,
   setReachedBottom,
-  keyWords,
-  setKeyWords,
-  sortValue,
-  setSortValue,
-  perPageValue,
 }: SearchProps): {
   handleSubmit: FormEventHandler<HTMLFormElement>
   handleChange: ChangeEventHandler<HTMLInputElement>
 } => {
   const dispatch = useAppDispatch()
-  const debounced = useDebouncedCallback((keyWords) => {
-    setKeyWords!(keyWords)
-  }, 1000)
-  const [pageNumber, setPageNumber] = useState<number>(2)
+  const { keyWords, pageNumber, sortValue, perPageValue } = useAppSelector((state) => state.query)
+  const debounced = useDebouncedCallback((keyWords: string) => {
+    dispatch(
+      querySlice.actions.setKeyWords(
+        keyWords.trim().toLowerCase().replace(/\s/g, '%20').replace(/,%20/g, '%20AND%20'),
+      ),
+    )
+  }, 300)
   useEffect(() => {
     if (keyWords.length !== 0 && reachedBottom) {
       dispatch(
@@ -33,45 +33,37 @@ export const useSearchData = ({
           keyWords,
           pageNumber: pageNumber.toString(),
           sortValue,
-          perPageValue,
+          perPageValue: perPageValue.toString(),
         }),
       )
-        .then(() => setPageNumber((prevState) => prevState + 1))
+        .then(() => dispatch(querySlice.actions.setPageNumber()))
         .finally(() => setReachedBottom(false))
     }
-  }, [
-    reachedBottom,
-    setReachedBottom,
-    setPageNumber,
-    pageNumber,
-    dispatch,
-    keyWords,
-    sortValue,
-    perPageValue,
-  ])
+  }, [dispatch, keyWords, pageNumber, sortValue, perPageValue, reachedBottom, setReachedBottom])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    debounced(
-      event.target.value.trim().toLowerCase().replace(/\s/g, '%20').replace(/,%20/g, '%20AND%20'),
-    )
+    debounced(event.target.value)
   }
+  console.log(keyWords)
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
     if (keyWords.length !== 0) {
+      dispatch(querySlice.actions.setSortValue(SortListOptions.byRelevance))
       dispatch(
         fetchArticlesByKeywords({
           keyWords,
-          sortValue: SortListOptions.byRelevance,
-          perPageValue,
+          sortValue,
+          perPageValue: perPageValue.toString(),
         }),
-      ).then(() => setSortValue(SortListOptions.byRelevance))
-    } else {
+      )
+    } else if (keyWords.length === 0) {
+      dispatch(querySlice.actions.setSortValue(SortListOptions.byNewest))
       dispatch(
         fetchArticles({
-          sortValue: SortListOptions.byNewest,
-          perPageValue,
+          sortValue,
+          perPageValue: perPageValue.toString(),
         }),
-      ).then(() => setSortValue(SortListOptions.byNewest))
+      )
     }
   }
   return {
