@@ -11,21 +11,20 @@ export const usePerPageSelectorData = (): {
   const { keyWords, sortValue, perPageValue } = useAppSelector((state) => state.query)
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     dispatch(querySlice.actions.resetPageNumber())
-    if (keyWords.length !== 0) {
-      dispatch(querySlice.actions.setPerPageValue(Number(event.target.value)))
+    dispatch(querySlice.actions.setPerPageValue(Number(event.target.value)))
+    if (keyWords !== null && keyWords.length !== 0) {
       dispatch(
         fetchArticlesByKeywords({
-          keyWords,
-          sortValue,
-          perPageValue: perPageValue.toString(),
+          keyWords: keyWords,
+          sortValue: sortValue,
+          perPageValue: event.target.value,
         }),
       )
-    } else {
-      dispatch(querySlice.actions.setPerPageValue(Number(event.target.value)))
+    } else if (keyWords === null || keyWords.length === 0) {
       dispatch(
         fetchArticles({
-          sortValue,
-          perPageValue: perPageValue.toString(),
+          sortValue: sortValue,
+          perPageValue: event.target.value,
         }),
       )
     }
