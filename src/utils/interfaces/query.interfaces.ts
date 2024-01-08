@@ -1,7 +1,9 @@
+import { SortListOptions } from '@lib/redux/reducers/slices/query'
+
 export interface Query {
-  sortValue?: string
+  sortValue?: SortListOptions | string
   perPageValue?: string
-  keyWords?: string
-  articleId?: string
+  keyWords?: string | null
+  lastArticleId?: string | null
   pageNumber?: string
 }

@@ -1,16 +1,16 @@
 import { FC } from 'react'
-import { ContentProps } from './content.interfaces'
 import styles from './content.styles.module.css'
 import { useContentData } from './hooks'
 import { ArticleCard } from '@components/article-card'
 
-export const Content: FC<ContentProps> = ({ reachedBottom, setReachedBottom }) => {
-  const articles = useContentData({ reachedBottom, setReachedBottom })
+export const Content: FC = () => {
+  const { articles, lastArticleRef } = useContentData()
   return (
     <div className={styles.wrapperContent}>
-      {articles.map((article) => (
+      {articles.map((article, index, array) => (
         <ArticleCard
           key={article.id}
+          ref={index === array.length - 1 ? lastArticleRef : null}
           id={article.id}
           webTitle={article.webTitle}
           webPublicationDate={article.webPublicationDate}
