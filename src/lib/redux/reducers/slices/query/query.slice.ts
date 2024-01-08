@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { QueryState } from './query-state.interfaces'
-import { SortListOptions } from '@components/sort'
+import { RootState } from '@lib/redux'
 
 const initialState: QueryState = {
-  articleId: '',
-  keyWords: '',
+  keyWords: null,
   pageNumber: 2,
-  sortValue: SortListOptions.byNewest,
+  sortValue: 'newest',
   perPageValue: 10,
 }
 
@@ -14,17 +13,14 @@ export const querySlice = createSlice({
   name: 'query',
   initialState,
   reducers: {
-    setArticleId(state: QueryState, actions: PayloadAction<string>) {
-      state.articleId = actions.payload
-    },
     setKeyWords(state: QueryState, actions: PayloadAction<string>) {
       state.keyWords = actions.payload
     },
     setPageNumber(state: QueryState) {
-      state.pageNumber++
+      state.pageNumber += 1
     },
     resetPageNumber(state: QueryState) {
-      state.pageNumber = 2
+      state.pageNumber = 1
     },
     setSortValue(state: QueryState, actions: PayloadAction<string>) {
       state.sortValue = actions.payload
@@ -35,12 +31,7 @@ export const querySlice = createSlice({
   },
 })
 
-export const {
-  setArticleId,
-  setKeyWords,
-  setPageNumber,
-  resetPageNumber,
-  setSortValue,
-  setPerPageValue,
-} = querySlice.actions
+export const { setKeyWords, setPageNumber, setPerPageValue, setSortValue, resetPageNumber } =
+  querySlice.actions
+export const querySate = (state: RootState) => state.query
 export const queryReducer = querySlice.reducer

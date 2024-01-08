@@ -1,7 +1,8 @@
+export type SortListOptions = 'newest' | 'relevance'
+
 export interface QueryState {
-  articleId: string
-  keyWords: string
+  keyWords: string | null
   pageNumber: number
-  sortValue: string
+  sortValue: SortListOptions | string
   perPageValue: number
 }
