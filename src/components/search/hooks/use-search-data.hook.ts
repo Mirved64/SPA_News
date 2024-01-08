@@ -1,5 +1,6 @@
-import { ChangeEvent, ChangeEventHandler, FormEventHandler } from 'react'
+import { ChangeEvent, ChangeEventHandler, FormEventHandler, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
+import { getKeywordsString } from '@components/search/helpers'
 import { fetchArticles, fetchArticlesByKeywords } from '@lib/redux/reducers/actions'
 import { querySate, querySlice } from '@lib/redux/reducers/slices/query'
 import { useAppDispatch, useAppSelector } from '@utils/hooks'
@@ -9,30 +10,33 @@ export const useSearchData = (): {
   handleChange: ChangeEventHandler<HTMLInputElement>
 } => {
   const dispatch = useAppDispatch()
+  const [currentKeywords, setCurrentKeyWords] = useState<string | null>(null)
   const { keyWords, sortValue, perPageValue } = useAppSelector(querySate)
   const debounced = useDebouncedCallback((keyWords: string) => {
-    dispatch(querySlice.actions.setKeyWords(keyWords))
+    setCurrentKeyWords(getKeywordsString(keyWords))
   }, 300)
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     debounced(event.target.value)
   }
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
-    if (keyWords !== null && keyWords.length !== 0) {
+    dispatch(querySlice.actions.setKeyWords(currentKeywords))
+    if (currentKeywords !== null && currentKeywords.length !== 0) {
+      dispatch(querySlice.actions.setSortValue('relevance'))
       dispatch(querySlice.actions.resetPageNumber())
       dispatch(
         fetchArticlesByKeywords({
-          keyWords: keyWords,
-          sortValue,
+          keyWords: currentKeywords,
+          sortValue: 'relevance',
           perPageValue: perPageValue.toString(),
         }),
       ).then(() => dispatch(querySlice.actions.setPageNumber()))
-    } else if (keyWords === null || keyWords.length === 0) {
+    } else if (currentKeywords === null || currentKeywords.length === 0) {
       dispatch(querySlice.actions.resetPageNumber())
       dispatch(querySlice.actions.setSortValue('newest'))
       dispatch(
         fetchArticles({
-          sortValue,
+          sortValue: 'newest',
           perPageValue: perPageValue.toString(),
         }),
       )

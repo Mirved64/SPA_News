@@ -4,7 +4,7 @@ import { RootState } from '@lib/redux'
 
 const initialState: QueryState = {
   keyWords: null,
-  pageNumber: 2,
+  pageNumber: 1,
   sortValue: 'newest',
   perPageValue: 10,
 }
@@ -13,7 +13,7 @@ export const querySlice = createSlice({
   name: 'query',
   initialState,
   reducers: {
-    setKeyWords(state: QueryState, actions: PayloadAction<string>) {
+    setKeyWords(state: QueryState, actions: PayloadAction<string | null>) {
       state.keyWords = actions.payload
     },
     setPageNumber(state: QueryState) {
