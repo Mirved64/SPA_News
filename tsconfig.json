@@ -21,16 +21,12 @@
     "paths": {
       "@/*": ["./src/*"],
 
-      "@utils": ["./src/utils/"],
       "@utils/*": ["./src/utils/*"],
 
-      "@lib": ["./src/lib/"],
       "@lib/*": ["./src/lib/*"],
 
-      "@app": ["./src/app/"],
       "@app/*": ["./src/app/*"],
 
-      "@components": ["./src/components/"],
       "@components/*": ["./src/components/*"],
 
       "@ui": ["./src/ui/"],

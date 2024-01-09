@@ -1,0 +1,33 @@
+.containerContent {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.wrapperContent {
+  flex-basis: 320px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  height: 100%;
+  background-color: var(--second-color);
+}
+
+@media screen and (min-width: 40em) {
+  .wrapperContent {
+    flex-basis: 640px;
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .wrapperContent {
+    flex-basis: 960px;
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .wrapperContent {
+    flex-basis: 1280px;
+  }
+}

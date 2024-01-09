@@ -1,0 +1,21 @@
+.selectPerPage {
+  width: 110px;
+  height: 30px;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-small);
+  background-color: var(--second-color);
+  padding: 5px 20px;
+  color: var(--primary-color);
+  font-size: var(--font-normal);
+}
+
+.select:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+}
+
+.label {
+  font-size: var(--font-normal);
+  color: var(--second-color);
+  line-height: 1.2;
+}
