@@ -1,7 +1,7 @@
 .buttonPrimary {
   cursor: pointer;
   display: flex;
-  border-radius: 16px;
+  border-radius: var(--border-radius-normal);
   align-items: center;
   justify-content: center;
   width: 100px;
@@ -11,13 +11,13 @@
 }
 
 .buttonTextPrimary {
-  font-size: 16px;
+  font-size: var(--font-standart);
   color: var(--primary-color);
   line-height: 1.1;
 }
 
 .buttonTextSearch {
-  font-size: 16px;
+  font-size: var(--font-standart);
   color: var(--primary-color);
   line-height: 1.1;
 }
@@ -25,7 +25,7 @@
 .buttonSearch {
   cursor: pointer;
   display: flex;
-  border-radius: 16px;
+  border-radius: var(--border-radius-normal);
   align-items: center;
   justify-content: center;
   width: 100px;

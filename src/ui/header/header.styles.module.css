@@ -23,6 +23,6 @@
 }
 
 .title {
-  font-size: 28px;
+  font-size: var(--font-big);
   color: white;
 }

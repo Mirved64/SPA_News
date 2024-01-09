@@ -6,17 +6,19 @@ import { ArticleCard } from '@components/article-card'
 export const Content: FC = () => {
   const { articles, lastArticleRef } = useContentData()
   return (
-    <div className={styles.wrapperContent}>
-      {articles.map((article, index, array) => (
-        <ArticleCard
-          key={article.id}
-          ref={index === array.length - 1 ? lastArticleRef : null}
-          id={article.id}
-          webTitle={article.webTitle}
-          webPublicationDate={article.webPublicationDate}
-          blocks={article.blocks}
-        />
-      ))}
+    <div className={styles.containerContent}>
+      <div className={styles.wrapperContent}>
+        {articles.map((article, index, array) => (
+          <ArticleCard
+            key={article.id}
+            ref={index === array.length - 1 ? lastArticleRef : null}
+            id={article.id}
+            webTitle={article.webTitle}
+            webPublicationDate={article.webPublicationDate}
+            blocks={article.blocks}
+          />
+        ))}
+      </div>
     </div>
   )
 }
