@@ -1,16 +1,19 @@
 import Image from 'next/image'
-import { FC } from 'react'
+import { forwardRef, ForwardRefRenderFunction } from 'react'
 import { useIntl } from 'react-intl'
 import { ArticleCardProps } from './article-card.interfaces'
 import styles from './article-card.styles.module.css'
 import { useCardData } from './hooks'
 import { ButtonPrimary } from '@ui/button'
 
-export const ArticleCard: FC<ArticleCardProps> = ({ id, webTitle, webPublicationDate, blocks }) => {
+const ArticleCardWithoutRef: ForwardRefRenderFunction<HTMLDivElement, ArticleCardProps> = (
+  { id, webTitle, webPublicationDate, blocks },
+  ref,
+) => {
   const { formatMessage } = useIntl()
   const { imgSrc, imgAlt, articleDate } = useCardData(blocks?.main?.bodyHtml, webPublicationDate)
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapperArticle} ref={ref}>
       <div className={styles.wrapperContent} id={id}>
         <div className={styles.wrapperImage}>
           <Image
@@ -41,3 +44,5 @@ export const ArticleCard: FC<ArticleCardProps> = ({ id, webTitle, webPublication
     </div>
   )
 }
+
+export const ArticleCard = forwardRef<HTMLDivElement, ArticleCardProps>(ArticleCardWithoutRef)

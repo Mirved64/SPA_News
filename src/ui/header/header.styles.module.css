@@ -1,4 +1,4 @@
-.wrapper {
+.header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,14 +10,16 @@
 
 .wrapperLogo {
   width: 320px;
-  height: 115px;
+  flex-basis: 115px;
+  background-color: inherit;
 }
 
-.wrapperTitle {
+.wrapperHeaderTitle {
   display: flex;
   justify-content: center;
   width: 320px;
-  height: 30px;
+  flex-basis: 30px;
+  background-color: inherit;
 }
 
 .title {

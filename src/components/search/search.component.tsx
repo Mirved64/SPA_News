@@ -1,30 +1,15 @@
 import { FC } from 'react'
 import { useIntl } from 'react-intl'
-import { SearchProps } from './search.interfaces'
 import styles from './search.styles.module.css'
 import { useSearchData } from '@components/search/hooks'
 import { ButtonSearch } from '@ui/button'
 import { SearchInput } from '@ui/input'
 
-export const Search: FC<SearchProps> = ({
-  reachedBottom,
-  setReachedBottom,
-  keyWords,
-  setKeyWords,
-  sortValue,
-  setSortValue,
-}) => {
+export const Search: FC = () => {
   const { formatMessage } = useIntl()
-  const { handleSubmit, handleChange } = useSearchData({
-    reachedBottom,
-    setReachedBottom,
-    keyWords,
-    setKeyWords,
-    sortValue,
-    setSortValue,
-  })
+  const { handleSubmit, handleChange } = useSearchData()
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapperSearch}>
       <form className={styles.searchForm} onSubmit={handleSubmit}>
         <div className={styles.searchInput}>
           <SearchInput

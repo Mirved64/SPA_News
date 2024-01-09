@@ -1,8 +1,9 @@
 .wrapperContent {
+  max-width: 1280px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100%;
-  width: 100%;
+  margin: 0 auto;
   background-color: var(--second-color);
 }

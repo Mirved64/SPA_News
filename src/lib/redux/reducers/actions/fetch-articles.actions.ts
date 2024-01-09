@@ -5,9 +5,9 @@ import { Article, Query } from '@utils/interfaces'
 
 export const fetchArticles = createAsyncThunk<Article[], Query, { rejectValue: string }>(
   'articles/fetchAll',
-  (query, thunkAPI) =>
-    fetch(
-      `https://content.guardianapis.com/search?api-key=${ACCESS_KEY}&format=json&show-blocks=main&order-by=${query.sortValue}`,
+  async (query, thunkAPI) => {
+    const response = await fetch(
+      `https://content.guardianapis.com/search?api-key=${ACCESS_KEY}&format=json&show-blocks=main&order-by=${query.sortValue}&page-size=${query.perPageValue}`,
       {
         method: 'GET',
         headers: {
@@ -15,7 +15,8 @@ export const fetchArticles = createAsyncThunk<Article[], Query, { rejectValue: s
         },
       },
     )
-      .then((response): Promise<DataResponse> => response.json())
-      .then((data) => data.response.results)
-      .catch((error) => thunkAPI.rejectWithValue(error.message)),
+    const data: DataResponse = await response.json()
+    if (!response.ok) return thunkAPI.rejectWithValue(data.response.message)
+    return data.response.results
+  },
 )

@@ -7,9 +7,9 @@ export const fetchNextArticlesByKeywords = createAsyncThunk<
   Article[],
   Query,
   { rejectValue: string }
->('nextArticles/fetchByKeyWords', (query, thunkAPI) =>
-  fetch(
-    `https://content.guardianapis.com/search?page=${query.pageNumber}&q=${query.keyWords}&api-key=${ACCESS_KEY}&format=json&show-blocks=main&order-by=${query.sortValue}`,
+>('nextArticles/fetchByKeyWords', async (query, thunkAPI) => {
+  const response = await fetch(
+    `https://content.guardianapis.com/search?page=${query.pageNumber}&q=${query.keyWords}&api-key=${ACCESS_KEY}&format=json&show-blocks=main&order-by=${query.sortValue}&page-size=${query.perPageValue}`,
     {
       method: 'GET',
       headers: {
@@ -17,7 +17,7 @@ export const fetchNextArticlesByKeywords = createAsyncThunk<
       },
     },
   )
-    .then((response): Promise<DataResponse> => response.json())
-    .then((data) => data.response.results)
-    .catch((error) => thunkAPI.rejectWithValue(error.message)),
-)
+  const data: DataResponse = await response.json()
+  if (!response.ok) return thunkAPI.rejectWithValue(data.response.message)
+  return data.response.results
+})

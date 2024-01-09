@@ -2,7 +2,8 @@ import { Article } from '@utils/interfaces'
 
 export interface DataResponse {
   response: {
-    status: string
+    status: 'ok' | 'error'
+    message: string
     userTier: string
     total: number
     startIndex: number
