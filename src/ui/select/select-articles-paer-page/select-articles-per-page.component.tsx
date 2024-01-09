@@ -11,7 +11,7 @@ export const SelectArticlesPerPage: FC<SelectArticlesPerPageProps> = ({
   const { formatMessage } = useIntl()
   let minArticlesPerPage: number = 10
   const array: number[] = []
-  while (array.length < 50) {
+  while (array.length < 41) {
     array.push(minArticlesPerPage++)
   }
   return (

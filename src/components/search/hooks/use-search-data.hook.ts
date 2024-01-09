@@ -11,9 +11,9 @@ export const useSearchData = (): {
 } => {
   const dispatch = useAppDispatch()
   const [currentKeywords, setCurrentKeyWords] = useState<string | null>(null)
-  const { keyWords, sortValue, perPageValue } = useAppSelector(querySate)
+  const { perPageValue } = useAppSelector(querySate)
   const debounced = useDebouncedCallback((keyWords: string) => {
-    setCurrentKeyWords(getKeywordsString(keyWords))
+    setCurrentKeyWords(() => getKeywordsString(keyWords))
   }, 300)
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     debounced(event.target.value)
