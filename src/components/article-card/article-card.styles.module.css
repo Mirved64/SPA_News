@@ -2,12 +2,7 @@
   display: flex;
   flex-basis: 300px;
   padding: 10px;
-  flex-grow: 1;
   justify-content: center;
-}
-
-.wrapperArticle:last-child {
-  flex-grow: 0;
 }
 
 .wrapperContent {
@@ -15,7 +10,7 @@
   flex-direction: column;
   height: 100%;
   align-items: center;
-  border-radius: 16px;
+  border-radius: var(--border-radius-normal);
   flex-basis: 300px;
   overflow: hidden;
 }
@@ -44,7 +39,7 @@
 }
 
 .infoDate {
-  font-size: 14px;
+  font-size: var(--font-normal);
   color: var(--second-color);
   margin-top: 10px;
 }
@@ -58,10 +53,7 @@
 }
 
 .infoTitle {
-  font-size: 14px;
+  font-size: var(--font-normal);
   line-height: 1.1;
   color: var(--second-color);
-}
-
-@media screen and (min-width: 60em) {
 }
