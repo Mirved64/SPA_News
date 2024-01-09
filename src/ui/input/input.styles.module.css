@@ -1,0 +1,23 @@
+.inputSearch {
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-normal);
+  background-color: var(--second-color);
+  padding-left: 20px;
+  font-size: var(--font-normal);
+}
+
+.inputSearch::placeholder {
+  font-size: var(--font-normal);
+  color: var(--ghost-color);
+}
+
+.inputSearch:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+}
+
+.inputSearch:invalid {
+  border: red solid 2px;
+}
