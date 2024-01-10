@@ -11,6 +11,12 @@ export interface Article {
   pillarId: string
   pillarName: string
   blocks: {
-    main: { bodyHtml: string }
+    main: {
+      id: string
+      bodyHtml: string
+    }
+    body: {
+      bodyHtml: string
+    }
   }
 }

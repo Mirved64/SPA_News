@@ -16,6 +16,7 @@ export const Content: FC = () => {
             webTitle={article.webTitle}
             webPublicationDate={article.webPublicationDate}
             blocks={article.blocks}
+            apiUrl={article.apiUrl}
           />
         ))}
       </div>
