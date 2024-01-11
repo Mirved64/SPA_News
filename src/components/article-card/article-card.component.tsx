@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { forwardRef, ForwardRefRenderFunction } from 'react'
 import { useIntl } from 'react-intl'
 import { ArticleCardProps } from './article-card.interfaces'
-import styles from './article-card.styles.module.css'
+import styles from './article-card.module.css'
 import { useCardData } from './hooks'
 import { ButtonPrimary } from '@ui/button'
 
@@ -12,7 +12,7 @@ const ArticleCardWithoutRef: ForwardRefRenderFunction<HTMLDivElement, ArticleCar
   ref,
 ) => {
   const { formatMessage } = useIntl()
-  const { imgSrc, imgAlt, articleDate, setCookie } = useCardData(
+  const { imgSrc, imgAlt, articleDate, createCookie } = useCardData(
     blocks?.main?.bodyHtml,
     webPublicationDate,
   )
@@ -44,7 +44,7 @@ const ArticleCardWithoutRef: ForwardRefRenderFunction<HTMLDivElement, ArticleCar
             <Link href={`/article/${blocks.main.id}`}>
               <ButtonPrimary
                 text={formatMessage({ id: 'article-card.details' })}
-                onClick={() => setCookie(apiUrl)}
+                onClick={() => createCookie(apiUrl)}
               />
             </Link>
           </div>
