@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useIntl } from 'react-intl'
-import styles from './search.styles.module.css'
-import { useSearchData } from '@components/search/hooks'
+import { useSearchData } from './hooks'
+import styles from './search.module.css'
 import { ButtonSearch } from '@ui/button'
 import { SearchInput } from '@ui/input'
 

@@ -1,6 +1,6 @@
 import { ChangeEvent, ChangeEventHandler, FormEventHandler, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
-import { getKeywordsString } from '@components/search/helpers'
+import { getKeywordsString } from '../helpers'
 import { fetchArticles, fetchArticlesByKeywords } from '@lib/redux/reducers/actions'
 import { querySate, querySlice } from '@lib/redux/reducers/slices/query'
 import { useAppDispatch, useAppSelector } from '@utils/hooks'
