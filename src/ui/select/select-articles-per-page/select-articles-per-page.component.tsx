@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useIntl } from 'react-intl'
 import { SelectArticlesPerPageProps } from './select-articles-per-page-value.interfaces'
-import styles from './select-articles-per-page-value.styles.module.css'
+import styles from './select-articles-per-page-value.module.css'
 
 export const SelectArticlesPerPage: FC<SelectArticlesPerPageProps> = ({
   id,
