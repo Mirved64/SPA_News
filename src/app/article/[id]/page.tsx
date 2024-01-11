@@ -1,9 +1,16 @@
 import DOMPurify from 'dompurify'
 import { JSDOM } from 'jsdom'
+import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { fetchArticleData } from './actions'
+import { GoBackButton } from '@ui/button'
 import { getArticleDate, getImgAlt, getImgSrc } from '@utils/helpers'
 
+export const metadata: Metadata = {
+  title: 'Article',
+  description: 'Simple SPA News',
+}
 const Page = async () => {
   const { webPublicationDate, webTitle, webUrl, blocks } = await fetchArticleData()
   return (
@@ -26,6 +33,7 @@ const Page = async () => {
             alt={getImgAlt(blocks?.main?.bodyHtml)}
             width={300}
             height={300}
+            style={{ width: '100%', height: 'auto' }}
           />
         </div>
         <div
@@ -35,6 +43,11 @@ const Page = async () => {
             ),
           }}
         />
+        <div>
+          <Link href={'/'}>
+            <GoBackButton text={'Go back'} />
+          </Link>
+        </div>
       </div>
     </main>
   )

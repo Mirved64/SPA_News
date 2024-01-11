@@ -4,9 +4,6 @@
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-}
 :root {
   --main-color: rgba(54, 112, 184, 1);
   --second-color: white;
@@ -17,4 +14,42 @@ a {
   --font-big: 28px;
   --border-radius-normal: 16px;
   --border-radius-small: 8px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+p {
+  text-indent: 32px;
+  line-height: 1.2;
+  text-align: justify;
+  margin-bottom: 10px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+h2 {
+  font-size: var(--font-big);
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+figure {
+  width: 300px;
+  height: auto;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+}
+
+figcaption span {
+  font-size: var(--font-normal);
+  line-height: 1.2;
+  color: var(--ghost-color);
 }
