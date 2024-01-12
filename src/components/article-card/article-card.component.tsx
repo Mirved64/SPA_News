@@ -41,7 +41,7 @@ const ArticleCardWithoutRef: ForwardRefRenderFunction<HTMLDivElement, ArticleCar
             <span className={styles.infoTitle}>{webTitle}</span>
           </div>
           <div>
-            <Link href={`/article/${blocks.main.id}`}>
+            <Link href={`/article/${blocks?.main?.id}`}>
               <ButtonPrimary
                 text={formatMessage({ id: 'article-card.details' })}
                 onClick={() => createCookie(apiUrl)}

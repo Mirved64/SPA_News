@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { fetchArticleData } from './actions'
+import styles from './page.module.css'
 import { GoBackButton } from '@ui/button'
 import { getArticleDate, getImgAlt, getImgSrc } from '@utils/helpers'
 
@@ -15,19 +16,23 @@ const Page = async () => {
   const { webPublicationDate, webTitle, webUrl, blocks } = await fetchArticleData()
   return (
     <main>
-      <div>
-        <h1>{webTitle}</h1>
-      </div>
-      <div>
-        <div>
-          <span>{getArticleDate(webPublicationDate)}</span>
-        </div>
-        <div>
-          <a href={webUrl}>Read on Guardian</a>
+      <div className={styles.articleTitleContainer}>
+        <div className={styles.articleTitleWrapper}>
+          <h1 className={styles.articleTitle}>{webTitle}</h1>
         </div>
       </div>
-      <div>
+      <div className={styles.container}>
         <div>
+          <span className={styles.articleDate}>{getArticleDate(webPublicationDate)}</span>
+        </div>
+        <div>
+          <a href={webUrl} target='_blank'>
+            Read on Guardian
+          </a>
+        </div>
+      </div>
+      <div className={styles.articleBodyContainer}>
+        <div className={styles.articleImgContainer}>
           <Image
             src={getImgSrc(blocks?.main?.bodyHtml)}
             alt={getImgAlt(blocks?.main?.bodyHtml)}
@@ -42,6 +47,7 @@ const Page = async () => {
               blocks?.body[0]?.bodyHtml,
             ),
           }}
+          className={styles.articleBody}
         />
         <div>
           <Link href={'/'}>
