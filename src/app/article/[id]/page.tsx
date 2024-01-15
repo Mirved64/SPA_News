@@ -22,10 +22,10 @@ const Page = async () => {
         </div>
       </div>
       <div className={styles.container}>
-        <div>
+        <div className={styles.dateContainer}>
           <span className={styles.articleDate}>{getArticleDate(webPublicationDate)}</span>
         </div>
-        <div>
+        <div className={styles.linkGuardianContainer}>
           <a href={webUrl} target='_blank'>
             Read on Guardian
           </a>
