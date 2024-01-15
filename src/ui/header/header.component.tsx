@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { FormattedMessage } from 'react-intl'
-import styles from './header.styles.module.css'
+import styles from './header.module.css'
 
 export const Header = () => (
   <header className={styles.header}>

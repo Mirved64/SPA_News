@@ -1,38 +1,43 @@
 {
-  "name": "spa-news",
-  "version": "0.1.0",
-  "private": false,
-  "license": "MIT",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md}' --config ./.prettierrc",
-    "check-all": "yarn run format && tsc --noEmit --pretty && yarn run lint"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "2.0.1",
-    "@uidotdev/usehooks": "2.4.1",
-    "moment": "2.29.4",
-    "next": "14.0.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-intl": "6.5.5",
-    "react-redux": "9.0.3",
-    "use-debounce": "10.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "20.10.5",
-    "@types/react": "18.2.45",
-    "@types/react-dom": "18.2.18",
-    "@types/redux-logger": "3.0.12",
-    "eslint": "8.56.0",
-    "eslint-config-next": "14.0.4",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-simple-import-sort": "10.0.0",
-    "prettier": "3.1.1",
-    "redux-logger": "3.0.6",
-    "typescript": "5.3.3"
-  }
+	"name": "spa-news",
+	"version": "0.1.0",
+	"private": false,
+	"license": "MIT",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md}' --config ./.prettierrc",
+		"check-all": "yarn run format && tsc --noEmit --pretty && yarn run lint"
+	},
+	"dependencies": {
+		"@reduxjs/toolkit": "2.0.1",
+		"@uidotdev/usehooks": "2.4.1",
+		"dompurify": "3.0.8",
+		"html-react-parser": "5.0.11",
+		"jsdom": "23.2.0",
+		"moment": "2.29.4",
+		"next": "14.0.4",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-intl": "6.5.5",
+		"react-redux": "9.0.3",
+		"use-debounce": "10.0.0"
+	},
+	"devDependencies": {
+		"@types/dompurify": "3.0.5",
+		"@types/jsdom": "21.1.6",
+		"@types/node": "20.10.5",
+		"@types/react": "18.2.45",
+		"@types/react-dom": "18.2.18",
+		"@types/redux-logger": "3.0.12",
+		"eslint": "8.56.0",
+		"eslint-config-next": "14.0.4",
+		"eslint-config-prettier": "9.1.0",
+		"eslint-plugin-simple-import-sort": "10.0.0",
+		"prettier": "3.1.1",
+		"redux-logger": "3.0.6",
+		"typescript": "5.3.3"
+	}
 }

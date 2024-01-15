@@ -1,21 +1,3 @@
-.buttonPrimary {
-  cursor: pointer;
-  display: flex;
-  border-radius: var(--border-radius-normal);
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 30px;
-  background-color: var(--second-color);
-  margin: 5px 10px 5px auto;
-}
-
-.buttonTextPrimary {
-  font-size: var(--font-standart);
-  color: var(--primary-color);
-  line-height: 1.1;
-}
-
 .buttonTextSearch {
   font-size: var(--font-standart);
   color: var(--primary-color);

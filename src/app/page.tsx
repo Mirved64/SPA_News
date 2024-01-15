@@ -1,5 +1,5 @@
 'use client'
-import styles from './page.styles.module.css'
+import styles from './page.module.css'
 import { Content } from '@components/content'
 import { PerPageSelector } from '@components/per-page-selector'
 import { Search } from '@components/search'

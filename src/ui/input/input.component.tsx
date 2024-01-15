@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { InputProps } from './input.interfaces'
-import styles from './input.styles.module.css'
+import styles from './input.module.css'
 
 export const SearchInput: FC<InputProps> = ({ onChange, placeholder }) => (
   <input

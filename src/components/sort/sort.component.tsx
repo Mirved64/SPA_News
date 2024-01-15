@@ -1,8 +1,8 @@
 import { FC } from 'react'
+import { useSortData } from './hooks'
 import { SortProps } from './sort.interfaces'
-import styles from './sort.styles.module.css'
-import { useSortData } from '@components/sort/hooks'
-import { SelectSortValue } from '@ui/select/select-sort-value'
+import styles from './sort.module.css'
+import { SelectSortValue } from '@ui/select'
 
 export const Sort: FC<SortProps> = ({ id }) => {
   const { handleChange, sortValue } = useSortData()

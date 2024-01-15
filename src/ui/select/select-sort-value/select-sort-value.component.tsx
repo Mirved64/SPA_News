@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useIntl } from 'react-intl'
 import { SelectSortValueProps } from './select-sort-value.interfaces'
-import styles from './select-sort-value.styles.module.css'
+import styles from './select-sort-value.module.css'
 
 export const SelectSortValue: FC<SelectSortValueProps> = ({
   id,

@@ -1,6 +1,6 @@
 import { ChangeEvent, ChangeEventHandler } from 'react'
 import { fetchArticles, fetchArticlesByKeywords } from '@lib/redux/reducers/actions'
-import { querySlice } from '@lib/redux/reducers/slices/query'
+import { querySate, querySlice } from '@lib/redux/reducers/slices/query'
 import { useAppDispatch, useAppSelector } from '@utils/hooks'
 
 export const useSortData = (): {
@@ -8,7 +8,7 @@ export const useSortData = (): {
   sortValue: string
 } => {
   const dispatch = useAppDispatch()
-  const { keyWords, sortValue, perPageValue } = useAppSelector((state) => state.query)
+  const { keyWords, sortValue, perPageValue } = useAppSelector(querySate)
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     if (keyWords !== null && keyWords.length !== 0) {
       dispatch(querySlice.actions.setSortValue(event.target.value))
