@@ -4,9 +4,6 @@
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-}
 :root {
   --main-color: rgba(54, 112, 184, 1);
   --second-color: white;
@@ -15,6 +12,13 @@ a {
   --font-normal: 14px;
   --font-standart: 16px;
   --font-big: 28px;
+  --font-semi-big: 20px;
   --border-radius-normal: 16px;
   --border-radius-small: 8px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-color);
+  cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react'
 import { fetchArticles, fetchArticlesByKeywords } from '@lib/redux/reducers/actions'
-import { querySlice } from '@lib/redux/reducers/slices/query'
+import { querySate, querySlice } from '@lib/redux/reducers/slices/query'
 import { useAppDispatch, useAppSelector } from '@utils/hooks'
 
 export const usePerPageSelectorData = (): {
@@ -8,7 +8,7 @@ export const usePerPageSelectorData = (): {
   perPageValue: number
 } => {
   const dispatch = useAppDispatch()
-  const { keyWords, sortValue, perPageValue } = useAppSelector((state) => state.query)
+  const { keyWords, sortValue, perPageValue } = useAppSelector(querySate)
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     dispatch(querySlice.actions.resetPageNumber())
     dispatch(querySlice.actions.setPerPageValue(Number(event.target.value)))

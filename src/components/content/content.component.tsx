@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import styles from './content.styles.module.css'
+import styles from './content.module.css'
 import { useContentData } from './hooks'
 import { ArticleCard } from '@components/article-card'
 
@@ -16,6 +16,7 @@ export const Content: FC = () => {
             webTitle={article.webTitle}
             webPublicationDate={article.webPublicationDate}
             blocks={article.blocks}
+            apiUrl={article.apiUrl}
           />
         ))}
       </div>

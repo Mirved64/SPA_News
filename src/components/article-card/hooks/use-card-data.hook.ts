@@ -1,9 +1,14 @@
-import { getArticleDate, getImgAlt, getImgSrc } from '../helpers'
+import { createCookie, getArticleDate, getImgAlt, getImgSrc } from '@utils/helpers'
 
 export const useCardData = (
   articleData: string | undefined,
   createdDate: string,
-): { imgSrc: string; imgAlt: string; articleDate: string } => {
+): {
+  imgSrc: string
+  imgAlt: string
+  articleDate: string
+  createCookie: (apiUrl: string) => void
+} => {
   const imgSrc: string = getImgSrc(articleData)
   const imgAlt: string = getImgAlt(articleData)
   const articleDate: string = getArticleDate(createdDate)
@@ -11,5 +16,6 @@ export const useCardData = (
     imgSrc,
     imgAlt,
     articleDate,
+    createCookie,
   }
 }

@@ -1,17 +1,21 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { forwardRef, ForwardRefRenderFunction } from 'react'
 import { useIntl } from 'react-intl'
 import { ArticleCardProps } from './article-card.interfaces'
-import styles from './article-card.styles.module.css'
+import styles from './article-card.module.css'
 import { useCardData } from './hooks'
 import { ButtonPrimary } from '@ui/button'
 
 const ArticleCardWithoutRef: ForwardRefRenderFunction<HTMLDivElement, ArticleCardProps> = (
-  { id, webTitle, webPublicationDate, blocks },
+  { id, webTitle, webPublicationDate, blocks, apiUrl },
   ref,
 ) => {
   const { formatMessage } = useIntl()
-  const { imgSrc, imgAlt, articleDate } = useCardData(blocks?.main?.bodyHtml, webPublicationDate)
+  const { imgSrc, imgAlt, articleDate, createCookie } = useCardData(
+    blocks?.main?.bodyHtml,
+    webPublicationDate,
+  )
   return (
     <div className={styles.wrapperArticle} ref={ref}>
       <div className={styles.wrapperContent} id={id}>
@@ -37,7 +41,12 @@ const ArticleCardWithoutRef: ForwardRefRenderFunction<HTMLDivElement, ArticleCar
             <span className={styles.infoTitle}>{webTitle}</span>
           </div>
           <div>
-            <ButtonPrimary text={formatMessage({ id: 'article-card.details' })} />
+            <Link href={`/article/${blocks?.main?.id}`}>
+              <ButtonPrimary
+                text={formatMessage({ id: 'article-card.details' })}
+                onClick={() => createCookie(apiUrl)}
+              />
+            </Link>
           </div>
         </div>
       </div>
