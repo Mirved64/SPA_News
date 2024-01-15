@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { DataResponse } from './fetch-articles.interfaces'
+import { DataResponse } from './data.interfaces'
 import { ACCESS_KEY } from '@utils/constants'
 import { Article, Query } from '@utils/interfaces'
 
